@@ -47,7 +47,7 @@ class ProgramRepository {
 
   async update(program: Program) {
     const [result] = await databaseClient.query<Result>(
-      "update program set title = ?, synopsis = ?, poster = ?, counstry = ?, year = ?, category_id = ? where id = ?",
+      "update program set title = ?, synopsis = ?, poster = ?, country = ?, year = ?, category_id = ? where id = ?",
       [
         program.title,
         program.synopsis,
@@ -55,6 +55,7 @@ class ProgramRepository {
         program.country,
         program.year,
         program.category_id,
+        program.id,
       ],
     );
     return result.affectedRows;
